@@ -8,7 +8,7 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/register")
+@app.route("/register", methods=["POST"])
 def register():
 
     # Validate submission
