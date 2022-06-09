@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__)
 
@@ -7,6 +7,8 @@ SPORTS = [
     "Soccer",
     "Ultimate Frisbee"
 ]
+
+REGISTRANTS = {}
 
 
 @app.route("/")
@@ -28,5 +30,12 @@ def register():
     if sport not in SPORTS:
         return render_template("error.html", message="Invalid sport")
 
+    REGISTRANTS[name] = sport
+
     # Confirm registration
-    return render_template("success.html")
+    return redirect("/registrants")
+
+
+@app.route("/registrants")
+def registrants():
+    return render_template("registrants.html", registrants=REGISTRANTS)
