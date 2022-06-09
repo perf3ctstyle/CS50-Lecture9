@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8" name="viewport" content="initial-scale=1, width=device-width">
-    <title>Index</title>
-</head>
-<body>
-Hello, {{ name }}
-</body>
-</html>
+{% extends "layout.html" %}
+
+{% block body %}
+
+<form action="/greet" method="post">
+    <input autocomplete="off" autofocus name="name" placeholder="Name" type="text">
+    <input type="submit">
+</form>
+
+{% endblock %}
